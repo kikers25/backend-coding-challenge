@@ -1,6 +1,15 @@
-README
+Introduction
 ====
-How to run the your solution...
+Java 8 sdk should be installed on your computer.
+
+How to run the your solution:
+* Open a command line screen
+* Go to the solution folder
+* run the following command: 'mvnw clean package'
+* Go to the folder target
+* Run the following command: 'java -jar expense-0.0.1-SNAPSHOT.jar'
+* The app should run in port 8080
+* Open a browser and go to "http://locahost:8080"
 
 Technology
 ====

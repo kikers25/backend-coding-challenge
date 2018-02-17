@@ -11,6 +11,9 @@ Technology
 * H2 as the database
 * Jersey as RESTful Web services 
 
+NOTES
+====
+I wanted to have the backend in different server than the front but I was not able to change the host and port of the XHR request in restalchemy.js
 
 
 IMPORTANT

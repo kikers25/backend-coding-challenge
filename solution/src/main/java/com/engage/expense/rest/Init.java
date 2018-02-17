@@ -1,4 +1,4 @@
-package com.engage.expense.controller;
+package com.engage.expense.rest;
 
 import org.springframework.stereotype.Component;
 

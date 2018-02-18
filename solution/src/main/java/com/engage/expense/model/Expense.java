@@ -1,13 +1,14 @@
 package com.engage.expense.model;
 
+import java.math.BigDecimal;
 import java.util.Objects;
 
 public class Expense {
 
     // dd/mm/yyyy
     private String date;
-    private String amount;
-    private String vat;
+    private BigDecimal amount;
+    private BigDecimal vat;
     private String reason;
 
     public String getDate() {
@@ -19,20 +20,20 @@ public class Expense {
         return this;
     }
 
-    public String getAmount() {
+    public BigDecimal getAmount() {
         return amount;
     }
 
-    public Expense setAmount(String amount) {
+    public Expense setAmount(BigDecimal amount) {
         this.amount = amount;
         return this;
     }
 
-    public String getVat() {
+    public BigDecimal getVat() {
         return vat;
     }
 
-    public Expense setVat(String vat) {
+    public Expense setVat(BigDecimal vat) {
         this.vat = vat;
         return this;
     }

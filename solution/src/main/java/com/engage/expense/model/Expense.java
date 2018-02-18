@@ -1,5 +1,7 @@
 package com.engage.expense.model;
 
+import java.util.Objects;
+
 public class Expense {
 
     // dd/mm/yyyy
@@ -42,5 +44,22 @@ public class Expense {
     public Expense setReason(String reason) {
         this.reason = reason;
         return this;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Expense expense = (Expense) o;
+        return Objects.equals(date, expense.date) &&
+                Objects.equals(amount, expense.amount) &&
+                Objects.equals(vat, expense.vat) &&
+                Objects.equals(reason, expense.reason);
+    }
+
+    @Override
+    public int hashCode() {
+
+        return Objects.hash(date, amount, vat, reason);
     }
 }

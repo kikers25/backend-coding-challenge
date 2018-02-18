@@ -29,5 +29,7 @@ public class ExpenseService {
 
     public void add(Expense expense) {
         logger.info("expense: " + expense);
+
+        jdbcTemplateExpenseDao.save(expense);
     }
 }

@@ -16,7 +16,7 @@ import static org.junit.Assert.assertThat;
 import static org.mockito.Mockito.doThrow;
 
 @RunWith(MockitoJUnitRunner.class)
-public class ExpenseEndpointTest {
+public class GetAllExpensesEndpointTest {
 
     @InjectMocks
     private ExpenseEndpoint expenseEndpoint;
@@ -32,7 +32,7 @@ public class ExpenseEndpointTest {
     }
 
     @Test(expected = RuntimeException.class)
-    public void should_throw_an_error_when_there_is_an_error_on_the_service() {
+    public void should_throw_an_exception_when_there_is_an_error_on_the_service() {
         doThrow(new RuntimeException("Error accessing Database")) //
                 .when(expenseService) //
                 .getAll();

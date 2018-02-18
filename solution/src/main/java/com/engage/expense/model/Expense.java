@@ -1,21 +1,30 @@
 package com.engage.expense.model;
 
+import com.engage.expense.config.LocalDateDeserializer;
+import com.engage.expense.config.LocalDateSerializer;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+
 import java.math.BigDecimal;
+import java.time.LocalDate;
 import java.util.Objects;
 
 public class Expense {
 
     // dd/mm/yyyy
-    private String date;
+    @JsonDeserialize(using = LocalDateDeserializer.class)
+    @JsonSerialize(using = LocalDateSerializer.class)
+    private LocalDate date;
+
     private BigDecimal amount;
     private BigDecimal vat;
     private String reason;
 
-    public String getDate() {
+    public LocalDate getDate() {
         return date;
     }
 
-    public Expense setDate(String date) {
+    public Expense setDate(LocalDate date) {
         this.date = date;
         return this;
     }

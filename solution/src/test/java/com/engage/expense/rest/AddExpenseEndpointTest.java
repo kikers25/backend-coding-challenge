@@ -1,17 +1,20 @@
 package com.engage.expense.rest;
 
 import com.engage.expense.model.Expense;
+import com.engage.expense.service.AppException;
 import com.engage.expense.service.ExpenseService;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
+import org.mockito.Mockito;
 import org.mockito.runners.MockitoJUnitRunner;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
 
 import static org.assertj.core.api.Assertions.fail;
+import static org.mockito.Mockito.doThrow;
 
 @RunWith(MockitoJUnitRunner.class)
 public class AddExpenseEndpointTest {
@@ -20,7 +23,7 @@ public class AddExpenseEndpointTest {
     private ExpenseEndpoint expenseEndpoint;
 
     @Mock
-    private ExpenseService expenseService;
+    private ExpenseService service;
 
 
     @Test(expected = IllegalArgumentException.class)
@@ -79,6 +82,15 @@ public class AddExpenseEndpointTest {
             expenseEndpoint.addOne(expense);
             fail("Should throw exception");
         } catch (IllegalArgumentException e) {}
+    }
+
+    @Test(expected = AppException.class)
+    public void should_throw_an_exception_when_there_was_an_error_storing_the_expense() {
+        doThrow(new AppException("error DB"))
+                .when(service)
+                .add(Mockito.any(Expense.class));
+
+        expenseEndpoint.addOne(getValidExpense());
     }
 
     private Expense getValidExpense() {

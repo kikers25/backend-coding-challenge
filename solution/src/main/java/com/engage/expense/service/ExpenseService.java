@@ -1,6 +1,9 @@
 package com.engage.expense.service;
 
 import com.engage.expense.model.Expense;
+import com.engage.expense.rest.ExpenseEndpoint;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;
@@ -11,6 +14,8 @@ import java.util.List;
 @Service
 public class ExpenseService {
 
+    private Logger logger = LoggerFactory.getLogger(ExpenseService.class.getName());
+
     public List<Expense> getAll() {
 
         Expense expense = new Expense() //
@@ -19,5 +24,10 @@ public class ExpenseService {
                 .setReason("dinner with lead") //
                 .setVat(new BigDecimal("2.03"));
         return Collections.singletonList(expense);
+    }
+
+    public void add(Expense expense) {
+        logger.info("expense: " + expense);
+
     }
 }

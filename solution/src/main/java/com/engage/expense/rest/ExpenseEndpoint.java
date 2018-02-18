@@ -20,7 +20,7 @@ public class ExpenseEndpoint {
     public static final BigDecimal ZERO = new BigDecimal(0);
     private ExpenseService expenseService;
 
-    Logger logger = LoggerFactory.getLogger(ExpenseEndpoint.class.getName());
+    private Logger logger = LoggerFactory.getLogger(ExpenseEndpoint.class.getName());
 
     @Autowired
     public ExpenseEndpoint(ExpenseService expenseService) {
@@ -31,6 +31,7 @@ public class ExpenseEndpoint {
     @GET
     @Produces("application/json")
     public List<Expense> getAll() {
+        logger.debug("Calling getAll");
 
         return expenseService.getAll();
     }
@@ -38,9 +39,10 @@ public class ExpenseEndpoint {
     @POST
     @Consumes("application/json")
     public void addOne(Expense expense) {
+        logger.debug("Calling add one: " + expense);
         check(expense);
 
-        logger.info("expense: " + expense);
+        expenseService.add(expense);
     }
 
     private void check(Expense expense) {

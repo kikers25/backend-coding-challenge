@@ -2,6 +2,8 @@ package com.engage.expense.rest;
 
 import com.engage.expense.model.Expense;
 import com.engage.expense.service.ExpenseService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -17,6 +19,8 @@ public class ExpenseEndpoint {
 
     public static final BigDecimal ZERO = new BigDecimal(0);
     private ExpenseService expenseService;
+
+    Logger logger = LoggerFactory.getLogger(ExpenseEndpoint.class.getName());
 
     @Autowired
     public ExpenseEndpoint(ExpenseService expenseService) {
@@ -35,7 +39,8 @@ public class ExpenseEndpoint {
     @Consumes("application/json")
     public void addOne(Expense expense) {
         check(expense);
-        System.out.println("Read: " + expense);
+
+        logger.info("expense: " + expense);
     }
 
     private void check(Expense expense) {

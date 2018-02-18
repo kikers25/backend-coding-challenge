@@ -5,9 +5,7 @@ import com.engage.expense.service.ExpenseService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import javax.ws.rs.GET;
-import javax.ws.rs.Path;
-import javax.ws.rs.Produces;
+import javax.ws.rs.*;
 import java.util.List;
 
 @Path("/expenses")
@@ -25,9 +23,17 @@ public class ExpenseEndpoint {
 
     @GET
     @Produces("application/json")
-    public List<Expense> get() {
+    public List<Expense> getAll() {
 
         return expenseService.getAll();
+    }
+
+    @POST
+    @Produces("application/json")
+    @Consumes("application/json")
+    public void addOne(Expense expense) {
+
+        System.out.println("Read: " + expense);
     }
 
 

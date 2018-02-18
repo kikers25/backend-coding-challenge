@@ -62,4 +62,14 @@ public class Expense {
 
         return Objects.hash(date, amount, vat, reason);
     }
+
+    @Override
+    public String toString() {
+        return "Expense{" +
+                "date='" + date + '\'' +
+                ", amount='" + amount + '\'' +
+                ", vat='" + vat + '\'' +
+                ", reason='" + reason + '\'' +
+                '}';
+    }
 }

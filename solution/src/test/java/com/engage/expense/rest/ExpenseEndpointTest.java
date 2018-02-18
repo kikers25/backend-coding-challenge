@@ -26,7 +26,7 @@ public class ExpenseEndpointTest {
 
     @Test
     public void should_return_a_list() {
-        List<Expense> expenses = expenseEndpoint.get();
+        List<Expense> expenses = expenseEndpoint.getAll();
 
         assertThat(expenses, is(instanceOf(List.class)));
     }
@@ -37,7 +37,7 @@ public class ExpenseEndpointTest {
                 .when(expenseService) //
                 .getAll();
 
-        expenseEndpoint.get();
+        expenseEndpoint.getAll();
     }
 
 }

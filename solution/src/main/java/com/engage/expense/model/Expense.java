@@ -1,6 +1,8 @@
 package com.engage.expense.model;
 
 public class Expense {
+
+    // dd/mm/yyyy
     private String date;
     private String amount;
     private String vat;

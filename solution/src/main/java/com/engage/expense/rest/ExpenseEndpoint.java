@@ -20,7 +20,7 @@ public class ExpenseEndpoint {
 
         Expense expense = new Expense() //
                 .setAmount("10.15") //
-                .setDate("01/01/2015") // TODO: Is the format of the date correct. See expenses-content.html
+                .setDate("01/01/2015") // dd
                 .setReason("dinner with lead") //
                 .setVat("2.03");
         return Collections.singletonList(expense);

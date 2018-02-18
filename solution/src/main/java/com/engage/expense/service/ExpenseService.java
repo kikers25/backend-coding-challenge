@@ -19,17 +19,23 @@ public class ExpenseService {
 
     private Logger logger = LoggerFactory.getLogger(ExpenseService.class.getName());
 
+    private JdbcTemplateExpenseDao jdbcTemplateExpenseDao;
+
     @Autowired
-    JdbcTemplateExpenseDao jdbcTemplateExpenseDao;
+    public ExpenseService(JdbcTemplateExpenseDao jdbcTemplateExpenseDao) {
+        this.jdbcTemplateExpenseDao = jdbcTemplateExpenseDao;
+    }
 
     public List<Expense> getAll() {
 
         return jdbcTemplateExpenseDao.getAll();
     }
 
-    public void add(Expense expense) {
+    public Expense add(Expense expense) {
         logger.info("expense: " + expense);
 
         jdbcTemplateExpenseDao.save(expense);
+
+        return expense;
     }
 }

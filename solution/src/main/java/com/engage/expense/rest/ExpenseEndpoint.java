@@ -1,6 +1,7 @@
 package com.engage.expense.rest;
 
 import com.engage.expense.model.Expense;
+import com.engage.expense.service.ExpenseService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 

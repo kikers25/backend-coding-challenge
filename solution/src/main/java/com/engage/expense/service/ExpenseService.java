@@ -1,4 +1,4 @@
-package com.engage.expense.rest;
+package com.engage.expense.service;
 
 import com.engage.expense.model.Expense;
 import org.springframework.stereotype.Service;

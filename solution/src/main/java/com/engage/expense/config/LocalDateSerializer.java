@@ -12,6 +12,7 @@ import java.time.format.DateTimeFormatter;
 public class LocalDateSerializer extends StdSerializer<LocalDate> {
 
     private static final long serialVersionUID = 1L;
+    public static final DateTimeFormatter FORMATTER = DateTimeFormatter.ofPattern("dd/MM/yyyy");
 
     public LocalDateSerializer(){
         super(LocalDate.class);
@@ -19,6 +20,6 @@ public class LocalDateSerializer extends StdSerializer<LocalDate> {
 
     @Override
     public void serialize(LocalDate value, JsonGenerator gen, SerializerProvider sp) throws IOException, JsonProcessingException {
-        gen.writeString(value.format(DateTimeFormatter.ISO_LOCAL_DATE));
+        gen.writeString(value.format(FORMATTER));
     }
 }

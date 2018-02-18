@@ -7,12 +7,15 @@ import com.fasterxml.jackson.databind.deser.std.StdDeserializer;
 
 import java.io.IOException;
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+
+import static com.engage.expense.config.LocalDateSerializer.FORMATTER;
 
 public class LocalDateDeserializer extends StdDeserializer<LocalDate> {
 
     private static final long serialVersionUID = 1L;
 
-    protected LocalDateDeserializer() {
+    public LocalDateDeserializer() {
         super(LocalDate.class);
     }
 
@@ -20,7 +23,8 @@ public class LocalDateDeserializer extends StdDeserializer<LocalDate> {
     @Override
     public LocalDate deserialize(JsonParser jp, DeserializationContext ctxt)
             throws IOException, JsonProcessingException {
-        return LocalDate.parse(jp.readValueAs(String.class));
+
+        return LocalDate.parse(jp.readValueAs(String.class), FORMATTER);
     }
 
 }

@@ -19,6 +19,8 @@ import static org.mockito.Mockito.doThrow;
 @RunWith(MockitoJUnitRunner.class)
 public class AddExpenseEndpointTest {
 
+    // Check that amount has just two decimals
+
     @InjectMocks
     private ExpenseEndpoint expenseEndpoint;
 
@@ -91,6 +93,15 @@ public class AddExpenseEndpointTest {
                 .add(Mockito.any(Expense.class));
 
         expenseEndpoint.addOne(getValidExpense());
+    }
+
+    @Test(expected = IllegalArgumentException.class)
+    public void should_throw_an_exception_when_the_amount_has_more_than_2_decimals() {
+
+        Expense validExpense = getValidExpense();
+        validExpense.setAmount(new BigDecimal("1.137"));
+
+        expenseEndpoint.addOne(validExpense);
     }
 
     private Expense getValidExpense() {

@@ -48,8 +48,12 @@ public class ExpenseEndpoint {
     private void check(Expense expense) {
         if (expense.getAmount() == null || expense.getDate() == null
                 || expense.getReason() == null || "".equals(expense.getReason().trim())) {
-            throw new IllegalArgumentException("Amount and date are mandatory fields");
+            throw new IllegalArgumentException("Amount, date and reason are mandatory fields");
         }
+        if(expense.getAmount().scale() > 2) {
+            throw new IllegalArgumentException("Amount should not have more than 2 decimals: " + expense.getAmount());
+        }
+
         LocalDate today = LocalDate.now();
         if (today.isBefore(expense.getDate())) {
             throw new IllegalArgumentException("Date " + expense.getDate() +" should be before than today: " + today);

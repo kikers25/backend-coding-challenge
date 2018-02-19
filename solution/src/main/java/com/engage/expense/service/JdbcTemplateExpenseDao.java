@@ -37,7 +37,7 @@ public class JdbcTemplateExpenseDao {
                     PreparedStatement ps = connection.prepareStatement(sql, new String[]{"ID"});
                     ps.setString(1, expense.getDate().format(FORMATTER));
                     ps.setString(2, expense.getAmount().toString());
-                    ps.setString(3, "0.00"); // TODO: VAT
+                    ps.setString(3, expense.getVat().toString());
                     ps.setString(4, expense.getReason());
                     return ps;
                 }, keyHolder);

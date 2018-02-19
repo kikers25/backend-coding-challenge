@@ -2,6 +2,10 @@ package com.engage.expense.rest;
 
 import com.engage.expense.model.Expense;
 import com.engage.expense.service.ExpenseService;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
+import io.swagger.annotations.ApiResponse;
+import io.swagger.annotations.ApiResponses;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,6 +18,7 @@ import java.util.List;
 
 @Path("/expenses")
 @Component
+@Api(value = "Expenses API", produces = "application/json")
 public class ExpenseEndpoint {
 
 
@@ -30,6 +35,12 @@ public class ExpenseEndpoint {
 
     @GET
     @Produces("application/json")
+    @ApiOperation(				//Swagger Annotation
+            value = "Get all the expenses",
+            response = Expense.class)
+    @ApiResponses(value = {		//Swagger Annotation
+            @ApiResponse(code = 200, message = "Resource found"),
+            @ApiResponse(code = 500, message = "Invalid parameters")})
     public List<Expense> getAll() {
         logger.debug("Calling getAll");
 
@@ -38,6 +49,11 @@ public class ExpenseEndpoint {
 
     @POST
     @Consumes("application/json")
+    @ApiOperation(				//Swagger Annotation
+            value = "Add an expense")
+    @ApiResponses(value = {		//Swagger Annotation
+            @ApiResponse(code = 204, message = "Added Resource"),
+            @ApiResponse(code = 500, message = "Invalid parameters")})
     public void addOne(Expense expense) {
         logger.debug("Calling add one: " + expense);
         check(expense);

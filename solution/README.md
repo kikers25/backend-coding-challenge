@@ -26,6 +26,11 @@ spring.datasource.password=our_password
 
 The database should have the expense table.
 
+API documentation
+====
+Swagger and Swagger ui as a way to show how the endpoint works. When the application is running just fo to the url:
+
+* http://localhost:8080/swagger/index.html
 
 Technology
 ====

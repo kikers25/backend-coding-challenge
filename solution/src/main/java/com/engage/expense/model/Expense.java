@@ -4,6 +4,7 @@ import com.engage.expense.config.LocalDateDeserializer;
 import com.engage.expense.config.LocalDateSerializer;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import io.swagger.annotations.ApiModelProperty;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
@@ -14,10 +15,16 @@ public class Expense {
     // dd/mm/yyyy
     @JsonDeserialize(using = LocalDateDeserializer.class)
     @JsonSerialize(using = LocalDateSerializer.class)
+    @ApiModelProperty(required = true,example = "01/01/2016")
     private LocalDate date;
 
+    @ApiModelProperty(required = true,example = "15.57")
     private BigDecimal amount;
+
+    @ApiModelProperty(example = "5.10")
     private BigDecimal vat;
+
+    @ApiModelProperty(required = true,example = "A reason")
     private String reason;
 
     public LocalDate getDate() {

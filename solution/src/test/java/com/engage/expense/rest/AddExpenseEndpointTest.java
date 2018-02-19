@@ -19,8 +19,6 @@ import static org.mockito.Mockito.doThrow;
 @RunWith(MockitoJUnitRunner.class)
 public class AddExpenseEndpointTest {
 
-    // Check that amount has just two decimals
-
     @InjectMocks
     private ExpenseEndpoint expenseEndpoint;
 
